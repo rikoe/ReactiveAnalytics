@@ -27,7 +27,12 @@ interface IProvide extends IState {
   dispatch?: Dispatch<IAction>
 }
 
-const initialState: IState = { currentSymbol: null, refetchAttempts: 0, searching: false, previousSearch: false }
+const initialState: IState = {
+  currentSymbol: null,
+  refetchAttempts: 0,
+  searching: false,
+  previousSearch: false
+}
 
 const reducer: React.Reducer<IState, IAction> = (state, action) => {
   switch (action.type) {

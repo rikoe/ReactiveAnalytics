@@ -1,4 +1,5 @@
 export const screenSize = {
+  mobileS: 375,
   mobile: 833,
   tabletS: 1000,
   tabletL: 1100,
@@ -7,6 +8,7 @@ export const screenSize = {
 }
 
 export const mediaQuery = {
+  mobileS: `(max-width: ${screenSize.mobileS}px)`,
   mobile: `(max-width: ${screenSize.mobile}px)`,
   tabletS: `(max-width: ${screenSize.tabletS}px)`,
   tabletL: `(max-width: ${screenSize.tabletL}px)`,

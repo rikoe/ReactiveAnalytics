@@ -1,8 +1,11 @@
 import Downshift, { GetItemPropsOptions } from 'downshift'
-import React from 'react'
+import React, { useCallback } from 'react'
+// import { FocusContext } from '../../../ra-platforms/focusContext'
 import { search_symbols as SearchResult, MarketSegment } from '../../../__generated__/types'
 import { fonts } from 'rt-theme/fonts'
 import styled from 'styled-components/macro'
+// import useFocus from '../../../ra-platforms/useFocus'
+// import { SearchContext } from '../SearchContext'
 interface ISearchBarProps {
   items: SearchResult[]
   initialItem: SearchResult | null
@@ -12,6 +15,7 @@ interface ISearchBarProps {
   placeholder: string
   currentText: string
 }
+// import useFocus from '../../../ra-platforms/useFocus'
 
 interface SearchResultWithIndex extends SearchResult {
   index: number
@@ -81,6 +85,30 @@ const SearchInput: React.FC<ISearchBarProps> = ({
     })
   }
 
+  // const [focus, updateFocus] =  useFocus(false)
+
+  // const onInputFocus = () => {
+  //   // const focusContext = useContext(FocusContext);
+  //   // focusContext.setFocus(true)
+  //   console.log(focus)
+  //   updateFocus(false)
+  // }
+
+  // const onInputFocus = useContext(() => {
+  //   console.log(focus)
+  //   updateFocus(false)
+  // }, [])
+  // const onInputFocus = useCallback(() => {
+  //   const focusContext = useContext(FocusContext);
+  //   focusContext.setFocus(true)
+  // }, [])
+  //
+  const onInputFocus = useCallback(() => {
+      console.log(focus)
+      // updateFocus(false)
+  }, [])
+
+
   return (
     <Downshift
       selectedItem={initialItem}
@@ -93,9 +121,12 @@ const SearchInput: React.FC<ISearchBarProps> = ({
         return (
           <SearchWrapper {...getRootProps()}>
             <input
-              {...getInputProps({ placeholder: placeholder })}
+              {...getInputProps({
+                placeholder: placeholder,
+                onFocus: onInputFocus
+              })}
               style={{ width: '100%' }}
-              autoFocus={true}
+              autoFocus={false}
               spellCheck={false}
             />
             {isOpen ? <SearchResults {...getMenuProps()}>{renderItems(getItemProps)}</SearchResults> : null}

@@ -57,6 +57,7 @@ const ApolloSearchContainer: React.FunctionComponent<Props> = ({ id, history, ur
 
   const handleChange = useCallback(
     (symbol: search_symbols | null) => {
+      console.log('handleChange', handleChange)
       if (dispatch) {
         dispatch({
           type: SearchContextActionTypes.SelectedSymbol,

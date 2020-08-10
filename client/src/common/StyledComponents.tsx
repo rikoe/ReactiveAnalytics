@@ -268,6 +268,9 @@ export const MainLayoutWrapper = styled.div<{ hasNoSearch?: boolean }>`
     grid-template-columns: none;
     grid-template-rows: ${({ hasNoSearch }) => (hasNoSearch ? 'auto auto 1fr' : 'auto 1fr')};
   }
+  @media ${mediaQuery.mobileS} {
+    grid-template-rows: auto 1fr 1fr};
+  }
 `
 
 export const ScrollableArea = styled.div`

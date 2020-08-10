@@ -11,6 +11,7 @@ import GlobalScrollbarStyle from './common/GlobalScrollbarStyle'
 import { RouterHelpers } from './helpers'
 import GlobalStyle from './rt-theme/globals'
 import { ThemeProvider } from './rt-theme/ThemeContext'
+import { FocusProvider } from './ra-platforms/focusContext'
 library.add(fasLightBulb, farLightBulb)
 
 const App = () => {
@@ -19,16 +20,18 @@ const App = () => {
       <ApolloProvider client={apolloClient}>
         <GlobalStyle />
         <ThemeProvider>
-          <GlobalScrollbarStyle />
-          <ParentContainer>
-            <BrowserRouter>
-              <Switch>
-                {Object.keys(RouterHelpers.RootRouterItems).map(route => (
-                  <Route key={route} exact={true} path={route} component={RouterHelpers.RenderRootRouterElement} />
-                ))}
-              </Switch>
-            </BrowserRouter>
-          </ParentContainer>
+          <FocusProvider>
+            <GlobalScrollbarStyle />
+            <ParentContainer>
+              <BrowserRouter>
+                <Switch>
+                  {Object.keys(RouterHelpers.RootRouterItems).map(route => (
+                    <Route key={route} exact={true} path={route} component={RouterHelpers.RenderRootRouterElement} />
+                  ))}
+                </Switch>
+              </BrowserRouter>
+            </ParentContainer>
+          </FocusProvider>
         </ThemeProvider>
       </ApolloProvider>
     </ContainerServiceProvider>

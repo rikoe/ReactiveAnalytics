@@ -22,6 +22,12 @@ const Sidebar = styled.div<{ hasPreviousSearch: boolean }>`
       margin: 0;
     }
   }
+  @media ${mediaQuery.mobile} {
+    width: 100%;
+    ${LogoWrapper} {
+      margin: 85% 0 0 0;;
+    }
+  }
 `
 
 const AppBar = () => {
